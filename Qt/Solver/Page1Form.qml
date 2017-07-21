@@ -91,6 +91,7 @@ Item {
         id: node11
         x: 40
         y: 60
+
     }
 
     Node {

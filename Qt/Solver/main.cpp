@@ -1,9 +1,13 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QQmlComponent>
+#include <QQmlEngine>
 #include "solver.h"
 
 
 void setInit(Solver*);
+void display(Solver*);
+
 
 int main(int argc, char *argv[])
 {
@@ -15,6 +19,9 @@ int main(int argc, char *argv[])
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 
     setInit(solver);
+    display(solver);
+
+
     solver->start();
     solver->checkCell();
     solver->checkPossible();
@@ -53,4 +60,19 @@ void setInit(Solver * solver){
     UNIT(8,2,8); UNIT(8,9,5);
     UNIT(9,1,5); UNIT(9,4,8); UNIT(9,5,6); UNIT(9,6,4); UNIT(9,8,9); UNIT(9,9,7);
 
+}
+void display(Solver * solver){
+
+    QQmlEngine engine;
+    QQmlComponent component(&engine,
+            QUrl(QStringLiteral("qrc:/Page1Form.qml")));
+    QObject *object = component.create();
+
+    QObject *node1 = object->findChild<QObject*>("11");
+    if (node1)
+        node1->setProperty("value","1");
+
+
+
+    delete object;
 }
