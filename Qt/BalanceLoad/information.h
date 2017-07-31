@@ -2,7 +2,8 @@
 #define INFORMATION_H
 
 #include <cstdint>
-enum resolution {p240 = 1, p360 = 2, p480 = 3, p720 = 4, p960 = 5, p1080 = 6};
+#include <iostream>
+enum resolution {p240 = 0, p360 = 1, p480 = 2, p720 = 3, p960 = 4, p1080 = 5};
 
 typedef struct config_information{
     int GPU[10][10];
@@ -24,7 +25,7 @@ typedef struct input_information{
 }input_information_t;
 
 
-void addToQueue(config_information_t,device_information_t*,input_information_t,int);
+void balanceDevices(config_information_t,device_information_t*,input_information_t,int);
 
 
 
