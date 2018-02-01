@@ -18,6 +18,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
@@ -34,6 +35,7 @@ public:
     QHBoxLayout *horizontalLayout;
     GLWidget *widget;
     QVBoxLayout *verticalLayout;
+    QSlider *Slider;
     QSpacerItem *verticalSpacer;
     QPushButton *Button;
     QMenuBar *menuBar;
@@ -64,6 +66,14 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(6);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        Slider = new QSlider(centralWidget);
+        Slider->setObjectName(QStringLiteral("Slider"));
+        Slider->setMinimum(1);
+        Slider->setPageStep(1);
+        Slider->setOrientation(Qt::Vertical);
+
+        verticalLayout->addWidget(Slider);
+
         verticalSpacer = new QSpacerItem(98, 150, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout->addItem(verticalSpacer);
@@ -77,7 +87,6 @@ public:
         horizontalLayout->addLayout(verticalLayout);
 
         MainWindow->setCentralWidget(centralWidget);
-        widget->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 675, 19));

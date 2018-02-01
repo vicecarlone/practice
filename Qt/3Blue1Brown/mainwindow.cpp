@@ -6,10 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->Slider,SIGNAL(valueChanged(int)),ui->widget,SLOT(setnumlight(int)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 

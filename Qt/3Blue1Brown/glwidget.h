@@ -18,7 +18,11 @@ public:
 private:
     QTimer timer;
 
+    void draw(int n);
+    void draw2(int n);
+    int numlight;
+public slots:
+    void setnumlight(int n);
 };
-
 
 #endif // GLWIDGET_H
