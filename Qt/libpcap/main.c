@@ -64,7 +64,8 @@ void * filt_inferface (void * param){
 
     printf("start capturing on interface:%s\n",name);
 
-    pcap_loop(handle, -1, got_packet, NULL);
+    int number_sample = 100;
+    pcap_loop(handle, -1, got_packet, (u_char *)&number_sample);
 
     pcap_freecode(&fp);
     pcap_close(handle);
@@ -81,7 +82,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
     const struct sniff_tcp *tcp;            /* The TCP header */
     const struct sniff_udp *udp;            /* The UDP header */
     const char *payload;                    /* Packet payload */
-
+    int * number_sample = (int *)args;
     int size_ip;
     int size_tcp;
     int size_udp;
@@ -89,6 +90,8 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
 
 
     /* define ethernet header */
+
+    printf("number_sample: %d\n", *number_sample);
     ethernet = (struct sniff_ethernet*)(packet);
     /* define/compute ip header offset */
     ip = (struct sniff_ip*)(packet + SIZE_ETHERNET);
@@ -103,6 +106,7 @@ void got_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *pa
     //printf("         To: %s\n", inet_ntoa(ip->ip_dst));
 
     /* determine protocol */
+
     switch(ip->ip_p) {
         case IPPROTO_TCP:
             //printf("   Protocol: TCP\n");

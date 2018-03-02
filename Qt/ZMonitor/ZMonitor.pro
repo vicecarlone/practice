@@ -5,7 +5,8 @@ SUBDIRS += \
     ProcessMornitoring \
     PacketCapture \
     InterfaceMornitoring \
-    TestCcallCxx
+    TestCcallCxx \
+    test
 
 CONFIG += ordered
 SUBDIRS += Build

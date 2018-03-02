@@ -33,6 +33,7 @@ SUBTARGETS    =  \
 		sub-PacketCapture \
 		sub-InterfaceMornitoring \
 		sub-TestCcallCxx \
+		sub-test \
 		sub-Build
 
 
@@ -251,44 +252,87 @@ sub-TestCcallCxx-uninstall_subtargets-ordered: sub-InterfaceMornitoring-uninstal
 sub-TestCcallCxx-uninstall_subtargets: FORCE
 	@test -d TestCcallCxx/ || mkdir -p TestCcallCxx/
 	cd TestCcallCxx/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/TestCcallCxx/TestCcallCxx.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
-sub-Build-qmake_all: sub-TestCcallCxx-qmake_all FORCE
+sub-test-qmake_all: sub-TestCcallCxx-qmake_all FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
+	cd test/ && $(MAKE) -f Makefile qmake_all
+sub-test: FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
+sub-test-make_first-ordered: sub-TestCcallCxx-make_first-ordered  FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-test-make_first: FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
+sub-test-all-ordered: sub-TestCcallCxx-all-ordered  FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-test-all: FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
+sub-test-clean-ordered: sub-TestCcallCxx-clean-ordered  FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-test-clean: FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
+sub-test-distclean-ordered: sub-TestCcallCxx-distclean-ordered  FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-test-distclean: FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
+sub-test-install_subtargets-ordered: sub-TestCcallCxx-install_subtargets-ordered  FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-test-install_subtargets: FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
+sub-test-uninstall_subtargets-ordered: sub-TestCcallCxx-uninstall_subtargets-ordered  FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-test-uninstall_subtargets: FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
+sub-Build-qmake_all: sub-test-qmake_all FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 	cd Build/ && $(MAKE) -f Makefile qmake_all
 sub-Build: FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile
-sub-Build-make_first-ordered: sub-TestCcallCxx-make_first-ordered  FORCE
+sub-Build-make_first-ordered: sub-test-make_first-ordered  FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
 sub-Build-make_first: FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile 
-sub-Build-all-ordered: sub-TestCcallCxx-all-ordered  FORCE
+sub-Build-all-ordered: sub-test-all-ordered  FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
 sub-Build-all: FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile all
-sub-Build-clean-ordered: sub-TestCcallCxx-clean-ordered  FORCE
+sub-Build-clean-ordered: sub-test-clean-ordered  FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
 sub-Build-clean: FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile clean
-sub-Build-distclean-ordered: sub-TestCcallCxx-distclean-ordered  FORCE
+sub-Build-distclean-ordered: sub-test-distclean-ordered  FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
 sub-Build-distclean: FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile distclean
-sub-Build-install_subtargets-ordered: sub-TestCcallCxx-install_subtargets-ordered  FORCE
+sub-Build-install_subtargets-ordered: sub-test-install_subtargets-ordered  FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
 sub-Build-install_subtargets: FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile install
-sub-Build-uninstall_subtargets-ordered: sub-TestCcallCxx-uninstall_subtargets-ordered  FORCE
+sub-Build-uninstall_subtargets-ordered: sub-test-uninstall_subtargets-ordered  FORCE
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile uninstall
 sub-Build-uninstall_subtargets: FORCE
@@ -583,16 +627,16 @@ Makefile: ../../ZMonitor.pro /opt/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++/qmake.con
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../../ZMonitor.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
-qmake_all: sub-SocketMornitoring-qmake_all sub-ProcessMornitoring-qmake_all sub-PacketCapture-qmake_all sub-InterfaceMornitoring-qmake_all sub-TestCcallCxx-qmake_all sub-Build-qmake_all FORCE
+qmake_all: sub-SocketMornitoring-qmake_all sub-ProcessMornitoring-qmake_all sub-PacketCapture-qmake_all sub-InterfaceMornitoring-qmake_all sub-TestCcallCxx-qmake_all sub-test-qmake_all sub-Build-qmake_all FORCE
 
-make_first: sub-SocketMornitoring-make_first-ordered sub-ProcessMornitoring-make_first-ordered sub-PacketCapture-make_first-ordered sub-InterfaceMornitoring-make_first-ordered sub-TestCcallCxx-make_first-ordered sub-Build-make_first-ordered  FORCE
-all: sub-SocketMornitoring-all-ordered sub-ProcessMornitoring-all-ordered sub-PacketCapture-all-ordered sub-InterfaceMornitoring-all-ordered sub-TestCcallCxx-all-ordered sub-Build-all-ordered  FORCE
-clean: sub-SocketMornitoring-clean-ordered sub-ProcessMornitoring-clean-ordered sub-PacketCapture-clean-ordered sub-InterfaceMornitoring-clean-ordered sub-TestCcallCxx-clean-ordered sub-Build-clean-ordered  FORCE
-distclean: sub-SocketMornitoring-distclean-ordered sub-ProcessMornitoring-distclean-ordered sub-PacketCapture-distclean-ordered sub-InterfaceMornitoring-distclean-ordered sub-TestCcallCxx-distclean-ordered sub-Build-distclean-ordered  FORCE
+make_first: sub-SocketMornitoring-make_first-ordered sub-ProcessMornitoring-make_first-ordered sub-PacketCapture-make_first-ordered sub-InterfaceMornitoring-make_first-ordered sub-TestCcallCxx-make_first-ordered sub-test-make_first-ordered sub-Build-make_first-ordered  FORCE
+all: sub-SocketMornitoring-all-ordered sub-ProcessMornitoring-all-ordered sub-PacketCapture-all-ordered sub-InterfaceMornitoring-all-ordered sub-TestCcallCxx-all-ordered sub-test-all-ordered sub-Build-all-ordered  FORCE
+clean: sub-SocketMornitoring-clean-ordered sub-ProcessMornitoring-clean-ordered sub-PacketCapture-clean-ordered sub-InterfaceMornitoring-clean-ordered sub-TestCcallCxx-clean-ordered sub-test-clean-ordered sub-Build-clean-ordered  FORCE
+distclean: sub-SocketMornitoring-distclean-ordered sub-ProcessMornitoring-distclean-ordered sub-PacketCapture-distclean-ordered sub-InterfaceMornitoring-distclean-ordered sub-TestCcallCxx-distclean-ordered sub-test-distclean-ordered sub-Build-distclean-ordered  FORCE
 	-$(DEL_FILE) Makefile
 	-$(DEL_FILE) .qmake.stash
-install_subtargets: sub-SocketMornitoring-install_subtargets-ordered sub-ProcessMornitoring-install_subtargets-ordered sub-PacketCapture-install_subtargets-ordered sub-InterfaceMornitoring-install_subtargets-ordered sub-TestCcallCxx-install_subtargets-ordered sub-Build-install_subtargets-ordered FORCE
-uninstall_subtargets: sub-SocketMornitoring-uninstall_subtargets-ordered sub-ProcessMornitoring-uninstall_subtargets-ordered sub-PacketCapture-uninstall_subtargets-ordered sub-InterfaceMornitoring-uninstall_subtargets-ordered sub-TestCcallCxx-uninstall_subtargets-ordered sub-Build-uninstall_subtargets-ordered FORCE
+install_subtargets: sub-SocketMornitoring-install_subtargets-ordered sub-ProcessMornitoring-install_subtargets-ordered sub-PacketCapture-install_subtargets-ordered sub-InterfaceMornitoring-install_subtargets-ordered sub-TestCcallCxx-install_subtargets-ordered sub-test-install_subtargets-ordered sub-Build-install_subtargets-ordered FORCE
+uninstall_subtargets: sub-SocketMornitoring-uninstall_subtargets-ordered sub-ProcessMornitoring-uninstall_subtargets-ordered sub-PacketCapture-uninstall_subtargets-ordered sub-InterfaceMornitoring-uninstall_subtargets-ordered sub-TestCcallCxx-uninstall_subtargets-ordered sub-test-uninstall_subtargets-ordered sub-Build-uninstall_subtargets-ordered FORCE
 
 sub-SocketMornitoring-check_ordered:
 	@test -d SocketMornitoring/ || mkdir -p SocketMornitoring/
@@ -609,10 +653,13 @@ sub-InterfaceMornitoring-check_ordered: sub-PacketCapture-check_ordered
 sub-TestCcallCxx-check_ordered: sub-InterfaceMornitoring-check_ordered 
 	@test -d TestCcallCxx/ || mkdir -p TestCcallCxx/
 	cd TestCcallCxx/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/TestCcallCxx/TestCcallCxx.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-sub-Build-check_ordered: sub-TestCcallCxx-check_ordered 
+sub-test-check_ordered: sub-TestCcallCxx-check_ordered 
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
+sub-Build-check_ordered: sub-test-check_ordered 
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile check
-check: sub-SocketMornitoring-check_ordered sub-ProcessMornitoring-check_ordered sub-PacketCapture-check_ordered sub-InterfaceMornitoring-check_ordered sub-TestCcallCxx-check_ordered sub-Build-check_ordered
+check: sub-SocketMornitoring-check_ordered sub-ProcessMornitoring-check_ordered sub-PacketCapture-check_ordered sub-InterfaceMornitoring-check_ordered sub-TestCcallCxx-check_ordered sub-test-check_ordered sub-Build-check_ordered
 
 sub-SocketMornitoring-benchmark_ordered:
 	@test -d SocketMornitoring/ || mkdir -p SocketMornitoring/
@@ -629,10 +676,13 @@ sub-InterfaceMornitoring-benchmark_ordered: sub-PacketCapture-benchmark_ordered
 sub-TestCcallCxx-benchmark_ordered: sub-InterfaceMornitoring-benchmark_ordered 
 	@test -d TestCcallCxx/ || mkdir -p TestCcallCxx/
 	cd TestCcallCxx/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/TestCcallCxx/TestCcallCxx.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-sub-Build-benchmark_ordered: sub-TestCcallCxx-benchmark_ordered 
+sub-test-benchmark_ordered: sub-TestCcallCxx-benchmark_ordered 
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
+sub-Build-benchmark_ordered: sub-test-benchmark_ordered 
 	@test -d Build/ || mkdir -p Build/
 	cd Build/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/Build/Build.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -f Makefile benchmark
-benchmark: sub-SocketMornitoring-benchmark_ordered sub-ProcessMornitoring-benchmark_ordered sub-PacketCapture-benchmark_ordered sub-InterfaceMornitoring-benchmark_ordered sub-TestCcallCxx-benchmark_ordered sub-Build-benchmark_ordered
+benchmark: sub-SocketMornitoring-benchmark_ordered sub-ProcessMornitoring-benchmark_ordered sub-PacketCapture-benchmark_ordered sub-InterfaceMornitoring-benchmark_ordered sub-TestCcallCxx-benchmark_ordered sub-test-benchmark_ordered sub-Build-benchmark_ordered
 install:install_subtargets  FORCE
 
 uninstall: uninstall_subtargets FORCE
@@ -642,7 +692,7 @@ FORCE:
 dist: distdir FORCE
 	(cd `dirname $(DISTDIR)` && $(TAR) $(DISTNAME).tar $(DISTNAME) && $(COMPRESS) $(DISTNAME).tar) && $(MOVE) `dirname $(DISTDIR)`/$(DISTNAME).tar.gz . && $(DEL_FILE) -r $(DISTDIR)
 
-distdir: sub-SocketMornitoring-distdir sub-ProcessMornitoring-distdir sub-PacketCapture-distdir sub-InterfaceMornitoring-distdir sub-TestCcallCxx-distdir sub-Build-distdir FORCE
+distdir: sub-SocketMornitoring-distdir sub-ProcessMornitoring-distdir sub-PacketCapture-distdir sub-InterfaceMornitoring-distdir sub-TestCcallCxx-distdir sub-test-distdir sub-Build-distdir FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/common/unix.conf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/common/linux.conf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/common/sanitize.conf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/common/gcc-base.conf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/common/gcc-base-unix.conf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/common/g++-base.conf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/common/g++-unix.conf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/qconfig.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dcore.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dcore_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dextras.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dextras_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dinput.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dinput_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dlogic.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dlogic_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dquick.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dquick_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dquickextras.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dquickextras_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dquickinput.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dquickinput_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dquickrender.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3dquickrender_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3drender.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_3drender_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_accessibility_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_bluetooth.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_bluetooth_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_bootstrap_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_clucene_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_concurrent.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_concurrent_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_core.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_core_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_dbus.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_dbus_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_designer.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_designer_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_designercomponents_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_devicediscovery_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_egl_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_eglfsdeviceintegration_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_eventdispatcher_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_fb_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_fontdatabase_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_glx_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_gui.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_gui_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_help.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_help_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_input_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_linuxaccessibility_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_location.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_location_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_multimedia.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_multimedia_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_multimediawidgets.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_multimediawidgets_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_network.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_network_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_nfc.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_nfc_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_opengl.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_opengl_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_openglextensions.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_openglextensions_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_packetprotocol_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_platformcompositor_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_positioning.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_positioning_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_printsupport.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_printsupport_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_qml.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_qml_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_qmldebug_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_qmldevtools_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_qmltest.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_qmltest_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_qtmultimediaquicktools_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_quick.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_quick_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_quickcontrols2.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_quickcontrols2_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_quickparticles_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_quicktemplates2_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_quickwidgets.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_quickwidgets_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_scxml.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_scxml_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_sensors.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_sensors_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_serialbus.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_serialbus_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_serialport.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_serialport_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_service_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_sql.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_sql_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_svg.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_svg_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_testlib.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_testlib_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_theme_support_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_uiplugin.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_uitools.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_uitools_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_webchannel.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_webchannel_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_websockets.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_websockets_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_webview.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_webview_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_widgets.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_widgets_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_x11extras.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_x11extras_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_xcb_qpa_lib_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_xml.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_xml_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_xmlpatterns.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/modules/qt_lib_xmlpatterns_private.pri /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/qt_functions.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/qt_config.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++/qmake.conf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_post.prf .qmake.stash /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/exclusive_builds.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/toolchain.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/default_pre.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/resolve_config.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/default_post.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/qml_debug.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/warn_on.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/qmake_use.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/file_copies.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/testcase_targets.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/exceptions.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/yacc.prf /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/lex.prf ../../ZMonitor.pro $(DISTDIR)/
 
@@ -665,6 +715,10 @@ sub-InterfaceMornitoring-distdir: FORCE
 sub-TestCcallCxx-distdir: FORCE
 	@test -d TestCcallCxx/ || mkdir -p TestCcallCxx/
 	cd TestCcallCxx/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/TestCcallCxx/TestCcallCxx.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/TestCcallCxx
+
+sub-test-distdir: FORCE
+	@test -d test/ || mkdir -p test/
+	cd test/ && ( test -e Makefile || $(QMAKE) -o Makefile /home/cpu10761-local/Desktop/pratice/Qt/ZMonitor/test/test.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug ) && $(MAKE) -e -f Makefile distdir DISTDIR=$(DISTDIR)/test
 
 sub-Build-distdir: FORCE
 	@test -d Build/ || mkdir -p Build/
