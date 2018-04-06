@@ -6,7 +6,8 @@ SUBDIRS += \
     PacketCapture \
     InterfaceMornitoring \
     TestCcallCxx \
-    test
+    test \
+    test_conn
 
 CONFIG += ordered
 SUBDIRS += Build
