@@ -186,10 +186,10 @@ void prg_cache_load(){
             lnamelen = readlink(line, lname, sizeof(lname) - 1);
             if (lnamelen == -1)
                 continue;
-                lname[lnamelen] = '\0';  /*make it a null-terminated string*/
+            lname[lnamelen] = '\0';  /*make it a null-terminated string*/
 
-                if (extract_type_1_socket_inode(lname, &inode) < 0)
-                  if (extract_type_2_socket_inode(lname, &inode) < 0)
+            if (extract_type_1_socket_inode(lname, &inode) < 0)
+                if (extract_type_2_socket_inode(lname, &inode) < 0)
                     continue;
 
             if (!cmdlp) {

@@ -1,0 +1,12 @@
+#ifndef PROCAGENT_GLOBAL_H
+#define PROCAGENT_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(PROCAGENT_LIBRARY)
+#  define PROCAGENTSHARED_EXPORT Q_DECL_EXPORT
+#else
+#  define PROCAGENTSHARED_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // PROCAGENT_GLOBAL_H
